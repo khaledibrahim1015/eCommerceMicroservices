@@ -1,3 +1,4 @@
+using Catalog.Api.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -27,6 +28,9 @@ namespace Catalog.Api
         {
 
             services.AddControllers();
+            
+            services.AddScoped<ICatalogContext, CatalogContext>(); // 
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Catalog.Api", Version = "v1" });
