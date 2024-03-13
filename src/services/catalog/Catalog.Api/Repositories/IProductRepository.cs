@@ -1,5 +1,4 @@
 ﻿using Catalog.Api.Entities;
-using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -11,7 +10,7 @@ namespace Catalog.Api.Repositories
         Task<IEnumerable<Product>> GetProducts();
         Task<Product> GetProductById(string id);
         Task<Product> GetProductByName(string name);
-        Task<Product> GetProdcutByCategoryName(string categoryName);
+        Task<IEnumerable<Product>> GetProdcutByCategoryName(string categoryName);
 
         Task CreateProduct( Product product);
         Task<bool> UpdateProduct(Product product);

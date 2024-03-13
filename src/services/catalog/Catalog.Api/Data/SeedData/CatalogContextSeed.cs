@@ -1,7 +1,5 @@
 ﻿using Catalog.Api.Entities;
-using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace Catalog.Api.Data.SeedData

@@ -33,14 +33,13 @@ namespace Catalog.Api.Repositories
                            .Products
                                .Find(p => p.Name == name)
                                   .FirstOrDefaultAsync();
-        public async Task<Product> GetProdcutByCategoryName(string categoryName)
+        public async Task<IEnumerable<Product>> GetProdcutByCategoryName(string categoryName)
         {
             FilterDefinition<Product> filter = Builders<Product>.Filter.Eq(p => p.Category, categoryName);
-
-           return  await _context.
-                            Products
-                              .Find(filter)
-                                   .FirstOrDefaultAsync();
+             return  await _context.
+                              Products
+                               .Find(filter)
+                                   .ToListAsync();
         }
 
        
@@ -68,9 +67,6 @@ namespace Catalog.Api.Repositories
             return  deletedResult.IsAcknowledged && deletedResult.DeletedCount > 0;
 
         }
-
-      
-
 
       
     }
