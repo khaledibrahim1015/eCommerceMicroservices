@@ -26,6 +26,12 @@ namespace Basket.Api
         public void ConfigureServices(IServiceCollection services)
         {
 
+            //  Registering Congiguration  Redis  Connection  => inject and retuen object of IDistributedCash
+            services.AddStackExchangeRedisCache(option =>
+            {
+                option.Configuration = Configuration.GetValue<string>("RedisCashSettings:ConnectionString");
+            });
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
