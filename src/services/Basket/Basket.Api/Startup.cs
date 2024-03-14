@@ -33,7 +33,7 @@ namespace Basket.Api
             {
                 option.Configuration = Configuration.GetValue<string>("RedisCachSettings:ConnectionString");
             });
-            services.AddScoped<ICacheService<ShoppingCart>, CacheService>();
+            services.AddScoped<ICacheService, CacheService>();
 
 
             services.AddControllers();
