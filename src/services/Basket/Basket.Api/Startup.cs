@@ -1,3 +1,5 @@
+using Basket.Api.Cache;
+using Basket.Api.Entities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -29,8 +31,10 @@ namespace Basket.Api
             //  Registering Congiguration  Redis  Connection  => inject and retuen object of IDistributedCash
             services.AddStackExchangeRedisCache(option =>
             {
-                option.Configuration = Configuration.GetValue<string>("RedisCashSettings:ConnectionString");
+                option.Configuration = Configuration.GetValue<string>("RedisCachSettings:ConnectionString");
             });
+            services.AddScoped<ICacheService<ShoppingCart>, CacheService>();
+
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
