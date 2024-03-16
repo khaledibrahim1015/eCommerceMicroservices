@@ -28,8 +28,8 @@ namespace Discount.Api
         public void ConfigureServices(IServiceCollection services)
         {
             //  Services 
-            services.AddSingleton<IDiscountDbContext ,  DiscountDbContext>();   
-            services.AddScoped<IDiscountService , DiscountService>();   
+            services.AddSingleton<IDiscountDbContext,DiscountDbContext>();   
+            services.AddScoped<IDiscountService,DiscountService>();   
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
