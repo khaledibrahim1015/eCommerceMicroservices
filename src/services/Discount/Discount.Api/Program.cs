@@ -1,3 +1,6 @@
+using Discount.Api.Entities;
+using Discount.Api.Extensions;
+using Discount.Api.Helpers;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
@@ -13,6 +16,12 @@ namespace Discount.Api
     {
         public static void Main(string[] args)
         {
+            // Build Application  return IHost => to extend in it 
+            var host =  CreateHostBuilder(args).Build(); 
+            // Migrate Database 
+            host.MigrateDatabase<Program>(ReflectionHelper.GetClassName<Coupon>());
+            // Run Application 
+            host.Run();
             CreateHostBuilder(args).Build().Run();
         }
 
